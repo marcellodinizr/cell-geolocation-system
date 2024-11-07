@@ -1,12 +1,13 @@
 import cors from 'cors';
 import express from 'express';
+import 'express-async-errors';
 import path from 'path';
 
 import errorHandler from './errors/handler';
 import routes from './routes';
 
-import 'express-async-errors';
 import './database/connection';
+
 
 const app = express();
 
