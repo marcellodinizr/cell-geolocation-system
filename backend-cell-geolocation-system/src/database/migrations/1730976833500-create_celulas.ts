@@ -31,8 +31,12 @@ export class createCelulas1730976833500 implements MigrationInterface {
 					precision: 2,
 				},
 				{
-					name: 'about',
-					type: 'text',
+					name: 'nucleus',
+					type: 'varchar',
+				},
+				{
+					name: 'network',
+					type: 'varchar',
 				},
 				{
 					name: 'week_day',

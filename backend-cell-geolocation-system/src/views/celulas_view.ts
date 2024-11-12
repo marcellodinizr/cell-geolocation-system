@@ -8,7 +8,8 @@ export default {
 			name: celula.name,
 			latitude: celula.latitude,
 			longitude: celula.longitude,
-			about: celula.about,
+			nucleus: celula.nucleus,
+			network: celula.network,
 			week_day: celula.week_day,
 			time_of_day: celula.time_of_day,
 			images: imagesView.renderMany(celula.images)

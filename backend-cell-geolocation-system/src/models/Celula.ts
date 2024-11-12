@@ -17,7 +17,10 @@ export default class Celula {
 	longitude: number;
 
 	@Column()
-	about: string;
+	nucleus: string;
+
+	@Column()
+	network: string;
 
 	@Column()
 	week_day: string;

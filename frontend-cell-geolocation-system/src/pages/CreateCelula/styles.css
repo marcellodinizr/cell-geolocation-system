@@ -32,7 +32,7 @@ form.create-celula-form fieldset {
 }
 
 form.create-celula-form fieldset + fieldset {
-  margin-top: 80px;
+  margin-top: 30px;
 }
 
 form.create-celula-form fieldset legend {
@@ -40,7 +40,7 @@ form.create-celula-form fieldset legend {
 
   font-size: 32px;
   line-height: 34px;
-  color: #5C8599;
+  color: #0C1F72;
   font-weight: 700;
 
   border-bottom: 1px solid #D3E2E5;
@@ -48,8 +48,12 @@ form.create-celula-form fieldset legend {
   padding-bottom: 24px;
 }
 
-form.create-celula-form .input-block {
+form.create-celula-form .input-block .nucleus {
+  margin-top: 10px;
+}
 
+form.create-celula-form .input-block .network {
+  margin-top: 10px;
 }
 
 form.create-celula-form .input-block + .input-block {
@@ -58,14 +62,14 @@ form.create-celula-form .input-block + .input-block {
 
 form.create-celula-form .input-block label {
   display: flex;
-  color: #8FA7B3;
+  color: #0C1F72;
   margin-bottom: 8px;
   line-height: 24px;
 }
 
 form.create-celula-form .input-block label span {
   font-size: 14px;
-  color: #8FA7B3;
+  color: #0C1F72;
   margin-left: 24px;
   line-height: 24px;
 }
@@ -77,7 +81,7 @@ form.create-celula-form .input-block textarea {
   border: 1px solid #D3E2E5;
   border-radius: 20px;
   outline: none;
-  color: #5C8599;
+  color: #0C1F72;
 }
 
 form.create-celula-form .input-block input {
@@ -132,7 +136,7 @@ form.create-celula-form .input-block .button-select button {
   height: 64px;
   background: #F5F8FA;
   border: 1px solid #D3E2E5;
-  color: #5C8599;
+  color: #0C1F72;
   cursor: pointer;
 }
 

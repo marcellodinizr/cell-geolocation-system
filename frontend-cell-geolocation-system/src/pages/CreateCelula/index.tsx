@@ -1,15 +1,16 @@
 import { LeafletMouseEvent } from "leaflet";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { FiPlus } from "react-icons/fi";
-import { Map, Marker, TileLayer } from "react-leaflet";
+import { Marker } from "react-leaflet";
 import { useHistory } from "react-router-dom";
 
+import { Map } from "../../components/Map";
 import { PrimaryButton } from "../../components/PrimaryButton";
 import { SelectInput } from "../../components/SelectInput";
 import { Sidebar } from "../../components/Sidebar";
 import { api } from "../../services/api";
 import { mapIcon } from "../../utils/mapIcon";
-import { timeOfDayOptions, weekdayOptions } from "../../utils/options/data";
+import { networkOptions, nucleusOptions, timeOfDayOptions, weekdayOptions } from "../../utils/options/data";
 
 import './styles.css';
 
@@ -19,7 +20,8 @@ export function CreateCelula() {
   const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
 
 	const [name, setName] = useState('');
-	const [about, setAbout] = useState('');
+	const [nucleus, setNucleus] = useState('');
+	const [network, setNetwork] = useState('');
 	const [week_day, setWeekDay] = useState('');
 	const [time_of_day, setTimeOfDay] = useState('');
   const [images, setImages] = useState<File[]>([]);
@@ -57,7 +59,8 @@ export function CreateCelula() {
     const data = new FormData();
 
     data.append('name', name);
-    data.append('about', about);
+    data.append('nucleus', nucleus);
+    data.append('network', network);
     data.append('latitude', String(latitude));
     data.append('longitude', String(longitude));
     data.append('week_day', week_day);
@@ -88,10 +91,6 @@ export function CreateCelula() {
             zoom={13}
 						onClick={handleMapClick}
           > 
-            <TileLayer
-             url={`https://api.mapbox.com/styles/v1/mapbox/streets-v12/tiles/256/{z}/{x}/{y}@2x?access_token=${import.meta.env.VITE_APP_MAPBOX_TOKEN}`}
-            />
-
             { position.latitude !== 0 && (
               <Marker 
                 interactive={false} 
@@ -101,20 +100,37 @@ export function CreateCelula() {
           </Map>
 
           <div className="input-block">
-              <label htmlFor="name">Nome</label>
+            <div className="name">
+              <label htmlFor="name">Nome da célula</label>
               <input 
 								id="name" 
 								value={name} 
-								onChange={event => setName(event.target.value)} />
+								onChange={event => setName(event.target.value)} /> 
+            </div>
+              
+            <div className="nucleus">
+                <label htmlFor="nucleus">Núcleo da sua célula</label>
+                <SelectInput
+                  className="select-input"
+                  name="nucleus"
+                  options={nucleusOptions}
+                  value={nucleusOptions.find(option => option.value === nucleus) ?? null}
+                  onChange={(option) => setNucleus(option ? option.value : '')}
+                />
+            </div>
+              
+            <div className="network">
+              <label htmlFor="network">Rede da sua célula</label>
+              <SelectInput
+                className="select-input"
+                name="network"
+                options={networkOptions}
+                value={networkOptions.find(option => option.value === network) ?? null}
+                onChange={(option) => setNetwork(option ? option.value : '')}
+              />
             </div>
 
-            <div className="input-block">
-              <label htmlFor="about">Sobre seu núcleo e rede <span>Máximo de 300 caracteres</span></label>
-              <textarea 
-								id="about" 
-								maxLength={300} value={about} 
-								onChange={event => setAbout(event.target.value)} />
-            </div>
+           </div>
 
             <div className="input-block">
               <label htmlFor="images">Fotos</label>
@@ -137,7 +153,7 @@ export function CreateCelula() {
         </fieldset>
 
         <fieldset>
-            <legend>Dia da semana e hora da célula</legend>
+            <legend>Dia da semana e horário da célula</legend>
 
             <div className="input-block">
               <label htmlFor="week_day">Dia da semana</label>
