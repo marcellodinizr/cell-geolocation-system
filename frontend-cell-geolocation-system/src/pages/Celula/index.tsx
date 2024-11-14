@@ -35,6 +35,7 @@ export function Celula() {
   const params = useParams<CelulaParams>();
     const [celula, setCelula] = useState<Celula>();
     const [activeImageIndex, setActiveImageIndex] = useState(0);
+    const TELEFONE = 5598989010109;
 
   useEffect(() => {
     api.get(`celulas/${params.id}`).then(response => {
@@ -122,11 +123,15 @@ export function Celula() {
                 
               </div>
             </div>
-
+            <a target="_blank" 
+              rel="noopener noreferrer"
+              href={`https://wa.me/${TELEFONE}?text=Olá%20gostaria%20de%20mais%20informações%20sobre%20a%20célula%20${celula.name}`}
+            >
             <PrimaryButton type="button">
               <FaWhatsapp size={20} color="#FFF" />
               Entrar em contato
             </PrimaryButton>
+            </a>
           </div>
         </div>
       </main>
